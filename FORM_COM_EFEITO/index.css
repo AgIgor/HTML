@@ -1,0 +1,21 @@
+div {
+    position: relative;
+  }
+  input {
+    display: block;
+    transition: top .3s, left .3s;
+    position: relative;
+    top: 17px;
+    font-size: 12px;
+  }
+  label {
+    transition: .2s linear;
+    position: absolute;
+    top: 20px;
+    font-size: 12px;
+    left: 5px;
+  }
+  input:focus + label {
+    top: 0px;
+    left: 0px;
+  }
