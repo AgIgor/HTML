@@ -149,7 +149,7 @@
             <p>Alcançado</p>
         </div>
         <div class="spinner">
-            <svg viewBox="0 0 232 232" style="--percent:100" id="spinner">
+            <svg viewBox="0 0 232 232" style="--percent:100" id="grafic">
                 <circle r="98.5" cx="50%" cy="50%" opacity="0.1" stroke="#D9D9D9" />
                 <circle r="98.5" cx="50%" cy="50%" stroke="url(#paint0_linear_201_85)" />
                 <defs>
@@ -166,13 +166,13 @@
         </div>
     </div>
 
-    <!-- <div class="box">
+    <div class="box">
         <div class="content">
-            <h3 id="legenda">0%</h3>
+            <h3 id="legenda2">0%</h3>
             <p>Alcançado</p>
         </div>
         <div class="spinner">
-            <svg viewBox="0 0 232 232" style="--percent:100" id="spinner">
+            <svg viewBox="0 0 232 232" style="--percent:100" id="grafic2">
                 <circle r="98.5" cx="50%" cy="50%" opacity="0.1" stroke="#D9D9D9" />
                 <circle r="98.5" cx="50%" cy="50%" stroke="url(#paint0_linear_201_85)" />
                 <defs>
@@ -185,9 +185,9 @@
             </svg>
         </div>
         <div class="range">
-            <input id="range" type="range" max="100" min="0" step="1" value="30" />
+            <input id="range2" type="range" max="100" min="0" step="1" value="30" />
         </div>
-    </div> -->
+    </div>
 
 
 
@@ -196,19 +196,25 @@
 </body>
 <script>
     window.onload = function () {
-        console.log(localStorage.getItem('spinner'))
-
         range.value = localStorage.getItem('spinner')
-        spinner.style = `--percent:${range.value}`
+        grafic.style = `--percent:${range.value}`
         legenda.innerText = `${range.value}%`
 
+        range2.value = localStorage.getItem('spinner2')
+        grafic2.style = `--percent:${range2.value}`
+        legenda2.innerText = `${range2.value}%`
     }
 
     range.oninput = () => {
-        spinner.style = `--percent:${range.value}`
+        grafic.style = `--percent:${range.value}`
         legenda.innerText = `${range.value}%`
-        localStorage.setItem('spinner', range.value)
+        localStorage.setItem('grafic', range.value)
+    }
 
+    range2.oninput = () => {
+        grafic2.style = `--percent:${range2.value}`
+        legenda2.innerText = `${range2.value}%`
+        localStorage.setItem('grafic2', range2.value)
     }
 
 </script>
