@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,26 +25,88 @@
         }
 
         body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
             background-color: var(--backGround);
             color: var(--text);
             height: 100vh;
             width: 100vw;
             display: flex;
+            flex-direction: row;
             gap: 50px;
             justify-content: center;
             align-items: center;
 
         }
 
-        .spinner {
+        .box {
+            display: flex;
+            flex-direction: column;
             box-shadow: 3px 4px 26px rgba(0, 0, 0, 0.25);
             border-radius: 16px;
-            /* width: 350px;
-            height: 350px; */
             display: flex;
             flex-direction: column;
             gap: 20px;
             padding: 20px;
+        }
+
+        .spinner {
+            box-shadow: 3px 4px 26px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .content {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 230%);
+            text-align: center;
+            color: var(--c2);
+        }
+
+        .range {
+            box-shadow: 3px 4px 26px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .range input[type=range] {
+            width: 100%;
+            cursor: ew-resize;
+            appearance: none;
+            background: transparent;
+            border-radius: 10px;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 13px;
+            cursor: pointer;
+            /* animate: 0.2s; */
+            /* box-shadow: 0px 0px 0px #50555C; */
+            background: #50555C;
+            /* background-image: linear-gradient(#CE9FFC, #7367F0); */
+            border-radius: 24px;
+            /* border: 1px solid #000000; */
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            /* box-shadow: 0px 0px 0px #000000; */
+            /* border: 1px solid #000000; */
+            height: 30px;
+            width: 17px;
+            border-radius: 27px;
+            background-image: linear-gradient(#CE9FFC, #7367F0);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -9.5px;
         }
 
         svg {
@@ -65,6 +130,7 @@
             stroke-dashoffset: calc(619 - (619 * var(--percent))/100);
             stroke-linecap: round;
             animation: progress 1s ease-in-out backwards;
+            transition: 1s ease-in-out;
         }
 
         @keyframes progress {
@@ -77,28 +143,73 @@
 </head>
 
 <body>
-    <div class="spinner">
-        <svg viewBox="0 0 232 232" style="--percent:70" id="spinner">
-            <circle r="98.5" cx="50%" cy="50%" opacity="0.1" stroke="#D9D9D9" />
-            <circle r="98.5" cx="50%" cy="50%" stroke="url(#paint0_linear_201_85)" />
-            <defs>
-                <linearGradient id="paint0_linear_201_85" x1="-9" y1="82" x2="145" y2="178"
-                    gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#CE9FFC" />
-                    <stop offset="1" stop-color="#7367F0" />
-                </linearGradient>
-            </defs>
-        </svg>
-        <input type="range" />
+    <div class="box">
+        <div class="content">
+            <h3 id="legenda">0%</h3>
+            <p>Alcançado</p>
+        </div>
+        <div class="spinner">
+            <svg viewBox="0 0 232 232" style="--percent:100" id="spinner">
+                <circle r="98.5" cx="50%" cy="50%" opacity="0.1" stroke="#D9D9D9" />
+                <circle r="98.5" cx="50%" cy="50%" stroke="url(#paint0_linear_201_85)" />
+                <defs>
+                    <linearGradient id="paint0_linear_201_85" x1="-9" y1="82" x2="145" y2="178"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#CE9FFC" />
+                        <stop offset="1" stop-color="#7367F0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="range">
+            <input id="range" type="range" max="100" min="0" step="1" value="30" />
+        </div>
     </div>
+
+    <!-- <div class="box">
+        <div class="content">
+            <h3 id="legenda">0%</h3>
+            <p>Alcançado</p>
+        </div>
+        <div class="spinner">
+            <svg viewBox="0 0 232 232" style="--percent:100" id="spinner">
+                <circle r="98.5" cx="50%" cy="50%" opacity="0.1" stroke="#D9D9D9" />
+                <circle r="98.5" cx="50%" cy="50%" stroke="url(#paint0_linear_201_85)" />
+                <defs>
+                    <linearGradient id="paint0_linear_201_85" x1="-9" y1="82" x2="145" y2="178"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#CE9FFC" />
+                        <stop offset="1" stop-color="#7367F0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="range">
+            <input id="range" type="range" max="100" min="0" step="1" value="30" />
+        </div>
+    </div> -->
+
+
+
+
 
 </body>
 <script>
-    spinner = document.getElementById("spinner")
-    spinner.addEventListener('change', function () {
-        console.log("ok")
-    })
+    window.onload = function () {
+        console.log(localStorage.getItem('spinner'))
 
+        range.value = localStorage.getItem('spinner')
+        spinner.style = `--percent:${range.value}`
+        legenda.innerText = `${range.value}%`
+
+    }
+
+    range.oninput = () => {
+        spinner.style = `--percent:${range.value}`
+        legenda.innerText = `${range.value}%`
+        localStorage.setItem('spinner', range.value)
+
+    }
 
 </script>
 
