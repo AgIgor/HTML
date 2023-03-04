@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --c1: #191a21;
+            --c2: #6272a4;
+            --backGround: #282A36;
+            --text: #f073bc;
+            --percent: 0;
+        }
+
+        body {
+            background-color: var(--backGround);
+            color: var(--text);
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .spinner {
+            box-shadow: 3px 4px 26px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            /* width: 350px;
+            height: 350px; */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        svg {
+            width: 197px;
+            height: 197px;
+            transform: rotate(-90deg);
+        }
+
+        svg circle {
+            stroke-dasharray: 619;
+            stroke-dashoffset: 619;
+            stroke-width: 35px;
+            fill: none;
+        }
+
+        svg circle:nth-child(1) {
+            stroke-dashoffset: 0
+        }
+
+        svg circle:nth-child(2) {
+            stroke-dashoffset: calc(619 - (619 * var(--percent))/100);
+            stroke-linecap: round;
+            animation: progress 1s ease-in-out backwards;
+        }
+
+        @keyframes progress {
+            0% {
+                stroke-dasharray: 619;
+                stroke-dashoffset: 619;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="spinner">
+        <svg viewBox="0 0 232 232" style="--percent:70" id="spinner">
+            <circle r="98.5" cx="50%" cy="50%" opacity="0.1" stroke="#D9D9D9" />
+            <circle r="98.5" cx="50%" cy="50%" stroke="url(#paint0_linear_201_85)" />
+            <defs>
+                <linearGradient id="paint0_linear_201_85" x1="-9" y1="82" x2="145" y2="178"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#CE9FFC" />
+                    <stop offset="1" stop-color="#7367F0" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <input type="range" />
+    </div>
+
+</body>
+<script>
+    spinner = document.getElementById("spinner")
+    spinner.addEventListener('change', function () {
+        console.log("ok")
+    })
+
+
+</script>
+
+</html>
